@@ -1,0 +1,79 @@
+class UndoRedo:
+    def __init__(self):
+        self.undo_stack = []  # Stack untuk menyimpan aksi yang bisa di-undo
+        self.redo_stack = []  # Stack untuk menyimpan aksi yang bisa di-redo
+
+    def do_action(self, action):
+        """Melakukan aksi dan menyimpannya di stack undo."""
+        self.undo_stack.append(action)
+        self.redo_stack.clear()  # Kosongkan stack redo saat aksi baru dilakukan
+        print(f"Action performed: {action}")
+        self.show_stacks()
+
+    def undo(self):
+        """Membatalkan aksi terakhir."""
+        if self.undo_stack:
+            action = self.undo_stack.pop()
+            self.redo_stack.append(action)  # Simpan aksi yang dibatalkan di stack redo
+            print(f"Action undone: {action}")
+        else:
+            print("No actions to undo. Please perform an action first.")
+        self.show_stacks()
+
+    def redo(self):
+        """Mengulangi aksi yang dibatalkan."""
+        if self.redo_stack:
+            action = self.redo_stack.pop()
+            self.undo_stack.append(action)  # Simpan kembali aksi yang diulang di stack undo
+            print(f"Action redone: {action}")
+        else:
+            print("No actions to redo. Please undo an action first.")
+        self.show_stacks()
+
+    def show_stacks(self):
+        """Menampilkan isi dari stack undo dan redo."""
+        print(f"Undo Stack: {self.undo_stack}")
+        print(f"Redo Stack: {self.redo_stack}")
+        print("-" * 40)
+
+# Contoh penggunaan
+if __name__ == "__main__":
+    manager = UndoRedo()
+    
+    # Menjalankan aplikasi
+    manager.do_action("Run Microsoft Word")
+    manager.do_action("Run Visual Studio Code")
+    
+    # Melakukan undo dan redo
+    manager.undo()
+    manager.redo()p1], b[4])class UndoRedo:
+    def __init__(self):
+        self.undo_stack = []  # Stack untuk menyimpan aksi yang bisa di-undo
+        self.redo_stack = []  # Stack untuk menyimpan aksi yang bisa di-redo
+rint (b[3], b[0
+print(b[
+    def do_action(self, action1, action2=None):
+        """Melakukan satu atau dua aksi dan menyimpannya di stack undo."""
+        self.undo_stack.append(action1)
+        if action2:
+            self.undo_stack.append(action2)
+        self.redo_stack.clear()  # Kosongkan stack redo saat aksi baru dilakukan
+        print(f"Actions performed: {action1}" + (f", {action2}" if action2 else ""))
+
+    def undo(self):
+        """Membatalkan aksi terakhir."""
+        if self.undo_stack:
+            action = self.undo_stack.pop()
+            self.redo_stack.append(action)  # Simpan aksi yang dibatalkan di stack redo
+            print(f"Action undone: {action}")
+        else:
+            print("No action to undo.")
+
+    def redo(self):
+        """Mengulangi aksi yang dibatalkan."""
+        if self.redo_stack:
+            action = self.redo_stack.pop()
+            self.undo_stack.append(action)  # Simpan kembali aksi yang diulang di stack undo
+            print(f"Action redone: {action}")
+        else:
+            print("No action to redo.
